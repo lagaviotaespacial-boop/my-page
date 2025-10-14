@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio | SonFromTank</title>
+    <script src="https://cdn.tailwindcss.com"></script> 
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos personalizados y animaciones */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #e2e8f0;
+        }
+
+        /* Efecto de "spotlight" que sigue al cursor (se mantiene) */
+        .spotlight {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(29, 78, 216, 0.15) 0%, rgba(29, 78, 216, 0) 70%);
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s, height 0.3s;
+            z-index: 9999;
+        }
+
+        /* Clases para animaciones de scroll */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Animación de entrada para el contenido principal */
+        @keyframes initial-fade-in-up {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .initial-animation {
+            animation: initial-fade-in-up 0.8s ease-out forwards;
+        }
+        
+        .card-hover-effect {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card-hover-effect:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* ESTILO AÑADIDO: Fuerza a los contenedores de las tarjetas a tomar la altura de la tarjeta más alta en cada fila */
+        /* Al usar 'grid' en el contenedor principal, los elementos se estirarán verticalmente por defecto. */
+        /* Pero en la segunda fila, la estructura es diferente. Usaremos la clase 'h-full' dentro de los divs de la cuadrícula. */
+        .equal-height-card {
+             /* min-h-full asegura que la tarjeta tome la altura de su contenedor de cuadrícula, forzando la igualación. */
+             min-height: 100%;
+        }
+    </style>
+</head>
+
+<body class="overflow-x-hidden">
+    <div class="spotlight"></div>
+
+    <div class="container mx-auto px-6 md:px-12 py-16 md:py-24">
+
+        <header class="text-center min-h-screen flex flex-col justify-center items-center">
+            <div class="initial-animation">
+                <h1 class="text-5xl md:text-7xl font-extrabold text-white">
+                    SonFromTank
+                </h1>
+                <p class="mt-4 text-xl md:text-2xl font-medium text-blue-400">Staff de Minecraft</p>
+                <div class="mt-8 max-w-3xl mx-auto">
+                    <p class="text-lg text-slate-300">
+                        Buenas, mi nombre es Jesús García, me dedico a la moderación de servidores de Minecraft y siempre intento dar mi máximo para poder mantener un ambiente amigable y libre de hackers en tu servidor!
+                    </p>
+                </div>
+            </div>
+            <div class="absolute bottom-10 animate-bounce">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+            </div>
+        </header>
+
+        <main>
+            <section id="about" class="py-20 fade-in-up">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-white">Sobre Mí</h2>
+                    <div class="w-24 h-1 bg-blue-500 mx-auto mt-4 rounded"></div>
+                </div>
+                <div class="max-w-4xl mx-auto bg-slate-900/50 p-8 rounded-2xl border border-slate-800">
+                    <p class="text-slate-300 leading-relaxed">
+                        Actualmente tengo 15 años y estoy cursando 3º de la ESO. Siempre intento mantener mis calificaciones altas, sin suspender ninguna asignatura. Mi horario es bastante flexible; dependiendo del día, normalmente puedo dedicarle unas <strong class="text-blue-400">8-9 horas a moderar en Discord</strong> y unas <strong class="text-blue-400">4-5 en Minecraft</strong>. Soy una persona que siempre está dispuesta a aprender y que nunca busca problemas con nadie.
+                    </p>
+                </div>
+            </section>
+
+            <section id="experience" class="py-20">
+                <div class="text-center mb-12 fade-in-up">
+                    <h2 class="text-4xl font-bold text-white">Experiencia Laboral</h2>
+                    <div class="w-24 h-1 bg-blue-500 mx-auto mt-4 rounded"></div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 fade-in-up card-hover-effect h-full">
+                        <h3 class="text-2xl font-bold text-blue-400">Jr. Admin - RayoMC</h3>
+                        <p class="text-slate-400 text-sm mb-4">Estancia de 3 meses</p>
+                        <ul class="list-disc list-inside text-slate-300 space-y-2">
+                            <li>De los staffs más antiguos, dominando cada problema.</li>
+                            <li>Encargado de supervisar el interview team.</li>
+                            <li>Muy activo, 2 veces staff del mes y 7 staff de la semana.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 fade-in-up card-hover-effect h-full" style="transition-delay: 150ms;">
+                        <h3 class="text-2xl font-bold text-blue-400">Helper - Sharkbox</h3>
+                        <p class="text-slate-400 text-sm mb-4">Moderación y Soporte</p>
+                        <ul class="list-disc list-inside text-slate-300 space-y-2">
+                            <li>Atención al usuario de respuesta rápida y eficaz.</li>
+                            <li>Moderación activa tanto en Minecraft como en Discord.</li>
+                            <li>Rápida y efectiva resolución de conflictos.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 fade-in-up card-hover-effect h-full" style="transition-delay: 300ms;">
+                        <h3 class="text-2xl font-bold text-blue-400">Helper - Minebosh</h3>
+                        <p class="text-slate-400 text-sm mb-4">Comunicación y Equipo</p>
+                        <ul class="list-disc list-inside text-slate-300 space-y-2">
+                            <li>Comunicación efectiva con usuarios de diferentes idiomas.</li>
+                            <li>Amable y social con otros staffs.</li>
+                            <li>Fomento de un buen ambiente en el equipo.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="max-w-4xl mx-auto">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:max-w-2xl lg:mx-auto">
+                        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 fade-in-up card-hover-effect h-full" style="transition-delay: 450ms;">
+                            <h3 class="text-2xl font-bold text-blue-400">Soporte - KrakenMc</h3>
+                            <p class="text-slate-400 text-sm mb-4">Rapidez y Eficacia</p>
+                            <ul class="list-disc list-inside text-slate-300 space-y-2">
+                                <li>Alta disponibilidad, siendo de los más activos</li>
+                                <li>Corta estancia de una semana, obteniendo ya 1 SOTW</li>
+                                <li>Ambiente profesional con compañeros y superiores</li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 fade-in-up card-hover-effect h-full" style="transition-delay: 600ms;">
+                            <h3 class="text-2xl font-bold text-blue-400">SS-Team - VanityMc</h3>
+                            <p class="text-slate-400 text-sm mb-4">SS-Verified (Actual)</p>
+                            <ul class="list-disc list-inside text-slate-300 space-y-2">
+                                <li>Especialización en el ambito de "ScreenShare"</li>
+                                <li>Rodeado de Profesionales en Screenshare</li>
+                                <li>Rapidez y Eficacia al realizar una ScreenShare</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="reviews" class="py-20 fade-in-up">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-white">Reseñas</h2>
+                    <div class="w-24 h-1 bg-blue-500 mx-auto mt-4 rounded"></div>
+                </div>
+                <div class="max-w-4xl mx-auto">
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 card-hover-effect">
+                        <blockquote class="relative">
+                            <svg class="w-10 h-10 text-slate-600 absolute -top-4 -left-4" fill="currentColor" viewBox="0 0 32 32" aria-hidden="true">
+                                <path d="M9.333 8h-2.667c-1.473 0-2.667 1.193-2.667 2.667v8c0 1.473 1.194 2.667 2.667 2.667h5.333c0-2.947-1.053-5.333-3.167-7.447-0.347-0.347-0.813-0.553-1.333-0.553h-1.833v-5.333zM25.333 8h-2.667c-1.473 0-2.667 1.193-2.667 2.667v8c0 1.473 1.194 2.667 2.667 2.667h5.333c0-2.947-1.053-5.333-3.167-7.447-0.347-0.347-0.813-0.553-1.333-0.553h-1.833v-5.333z"></path>
+                            </svg>
+                            <p class="text-slate-300 italic leading-relaxed text-lg">
+                                "Jisus fue un staff cuando lo conocí solo miraba como subía evidencias cuando lo conocí vi su profesionalidad es bastante profesional relajado y dispuesto aprender paso de no saber nada hasta ser un SS-advanced en SS-team se adapta bastante y demuestra su nivel no solo con palabras con acciones."
+                            </p>
+                        </blockquote>
+                        <footer class="mt-6">
+                            <p class="text-right text-blue-400 font-semibold">- Ex compañero Rayomc</p>
+                        </footer>
+                    </div>
+                </div>
+            </section>
+
+            <section id="skills" class="py-20">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div class="fade-in-up">
+                        <div class="text-center mb-8">
+                            <h2 class="text-3xl font-bold text-white">Otros Conocimientos</h2>
+                            <div class="w-20 h-1 bg-blue-500 mx-auto mt-3 rounded"></div>
+                        </div>
+                        <div class="space-y-6">
+                            <div class="bg-slate-900/50 p-6 rounded-lg border border-slate-800">
+                                <h4 class="text-xl font-semibold text-blue-400">ScreenShare</h4>
+                                <p class="text-slate-300 mt-1">Conocimiento avanzado, llegando hasta el rango de SS-Advanced en RayoMC y Sharkbox.</p>
+                            </div>
+                            <div class="bg-slate-900/50 p-6 rounded-lg border border-slate-800">
+                                <h4 class="text-xl font-semibold text-blue-400">Resolución de Conflictos</h4>
+                                <p class="text-slate-300 mt-1">Siempre encuentro una forma eficaz para resolver los conflictos, intentando que nadie termine enfadado.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fade-in-up" style="transition-delay: 150ms;">
+                        <div class="text-center mb-8">
+                            <h2 class="text-3xl font-bold text-white">Idiomas</h2>
+                            <div class="w-20 h-1 bg-blue-500 mx-auto mt-3 rounded"></div>
+                        </div>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-base font-medium text-slate-200">Inglés</span>
+                                    <span class="text-sm font-medium text-slate-400">Avanzado</span>
+                                </div>
+                                <div class="w-full bg-slate-700 rounded-full h-2.5">
+                                    <div class="bg-blue-500 h-2.5 rounded-full" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-base font-medium text-slate-200">Español</span>
+                                    <span class="text-sm font-medium text-slate-400">Nativo</span>
+                                </div>
+                                <div class="w-full bg-slate-700 rounded-full h-2.5">
+                                    <div class="bg-blue-500 h-2.5 rounded-full" style="width: 100%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-base font-medium text-slate-200">Portugués</span>
+                                    <span class="text-sm font-medium text-slate-400">Básico</span>
+                                </div>
+                                <div class="w-full bg-slate-700 rounded-full h-2.5">
+                                    <div class="bg-blue-500 h-2.5 rounded-full" style="width: 25%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="contact" class="py-20">
+                <div class="text-center mb-12 fade-in-up">
+                    <h2 class="text-4xl font-bold text-white">Contacto</h2>
+                    <div class="w-24 h-1 bg-blue-500 mx-auto mt-4 rounded"></div>
+                </div>
+                <div class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 text-center">
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 fade-in-up card-hover-effect">
+                        <svg class="w-12 h-12 mx-auto text-blue-400" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.317,4.485c-0.34-0.194-0.71-0.323-1.096-0.393c-0.264-0.048-0.533-0.076-0.808-0.076C18.15,4.016,18.01,4,17.865,4 H17.84c-0.033,0-0.066-0.002-0.098-0.002c-0.562,0-1.12,0.06-1.666,0.176C14.73,4.58,13.4,5.32,12,5.32 s-2.73-0.74-4.075-1.145C7.37,4.06,6.815,4,6.25,4C6.25,4,6.25,4,6.155,4H6.13c-0.145,0-0.285,0.016-0.42,0.02 c-0.275,0-0.543,0.028-0.808,0.076c-0.386,0.07-0.756,0.199-1.096,0.393C3.46,4.7,3.1,5.03,2.83,5.43 C2.08,6.7,1.83,8.31,1.96,10.23c0,0.06,0.01,0.12,0.02,0.18c0.23,2.23,1.3,4.58,3.71,6.33c0.04,0.02,0.07,0.05,0.11,0.07 c0.8,0.53,1.62,1,2.47,1.36c0,0,0.01,0,0.01,0c0.41,0.17,0.82,0.32,1.25,0.44c0.49,0.14,1,0.25,1.52,0.33 c0.02,0.01,0.05,0.01,0.07,0.02c0.12,0.02,0.25,0.03,0.37,0.03h0.02c0.01,0,0.02,0,0.03,0c0.24,0,0.48-0.03,0.72-0.08 c0.02,0,0.03-0.01,0.05-0.01c1.23-0.24,2.4-0.71,3.48-1.37c0.04-0.02,0.07-0.05,0.11-0.07c2.41-1.75,3.48-4.1,3.71-6.33 c0.01-0.06,0.02-0.12,0.02-0.18C22.17,8.31,21.92,6.7,21.17,5.43C20.9,5.03,20.54,4.7,20.317,4.485z M8.02,15.01 c-0.94,0-1.7-0.79-1.7-1.76s0.76-1.76,1.7-1.76c0.95,0,1.72,0.79,1.7,1.76S8.97,15.01,8.02,15.01z M15.98,15.01 c-0.94,0-1.7-0.79-1.7-1.76s0.76-1.76,1.7-1.76c0.95,0,1.72,0.79,1.7,1.76S16.93,15.01,15.98,15.01z"></path></svg>
+                        <h3 class="text-xl font-bold text-slate-100 mt-4">Discord</h3>
+                        <p class="text-slate-400 mt-1">viniiii_7</p>
+                    </div>
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 fade-in-up card-hover-effect" style="transition-delay: 150ms;">
+                        <svg class="w-12 h-12 mx-auto text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-14L4 7m0 0v10l8 4m0-14L4 7m8 4l8 4m-8-4L4 11m16 0l-8 4m0 0l-8-4"></path></svg>
+                        <h3 class="text-xl font-bold text-slate-100 mt-4">IGN</h3>
+                        <p class="text-slate-400 mt-1">SonFromTank</p>
+                    </div>
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 fade-in-up card-hover-effect" style="transition-delay: 300ms;">
+                        <svg class="w-12 h-12 mx-auto text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        <h3 class="text-xl font-bold text-slate-100 mt-4">Correo</h3>
+                        <p class="text-slate-400 mt-1">hesusggxd@gmail.com</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="text-center py-10 border-t border-slate-800 mt-16 fade-in-up">
+            <p class="text-slate-500">Portafolio Personal By-SonFromTank.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // --- Lógica para el "spotlight" del cursor ---
+            const spotlight = document.querySelector('.spotlight');
+            if (spotlight) {
+                 window.addEventListener('mousemove', (e) => {
+                     // Ajusta la posición del spotlight con el movimiento del ratón
+                     spotlight.style.left = e.pageX + 'px';
+                     spotlight.style.top = e.pageY + 'px';
+                 });
+            }
+            
+            // --- Lógica para las animaciones al hacer scroll ---
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1 // El elemento se considera visible cuando el 10% está en pantalla
+            });
+
+            // Observar todos los elementos con la clase 'fade-in-up'
+            const elementsToAnimate = document.querySelectorAll('.fade-in-up');
+            elementsToAnimate.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
